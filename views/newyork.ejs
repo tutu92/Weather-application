@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+<div class="container">
+    
+    <% temper.forEach(function(temperatureams){ %>
+        <h1>The current temperature in New York is <%= temperatureams.temperature  %> °C</h1>
+        <span><p><%= moment(temperatureams.createdAt).fromNow() %></p> </span>
+        <br>
+    <% }) %>
+    
+    
+    <% maxtemper.forEach(function(maxtemperatureams){ %>
+        <h1>The maximum temperature in New York in 24 hours is <%=  maxtemperatureams.temperature  %> °C</h1>
+        <span><p><%= moment(maxtemperatureams.createdAt).fromNow() %></p> </span>
+        <br>
+    <% }) %>
+    
+    <% mintemper.forEach(function(mintemperatureams){ %>
+        <h1>The minimum temperature in New York in 24 hours is <%=  mintemperatureams.temperature  %> °C</h1>
+        <span><p><%= moment(mintemperatureams.createdAt).fromNow() %></p> </span>
+        <br>
+    <% }) %>
+
+    <form action="/weatherapp/NewYork/" method="POST">
+        <button class="btn btn-lg btn-success" name="newTemp">Update the current temperature field</button>
+    </form>
+        <br>
+    <a class="goback" href="/weatherapp">Go back</a>
+    
+</div>
+
+<% include ../partials/footer %>

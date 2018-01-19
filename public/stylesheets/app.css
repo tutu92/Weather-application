@@ -1,0 +1,46 @@
+body {
+    background-image: url("https://www.ottobock.com/media/css/img/world-map.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    padding-top: 20vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+li {
+    list-style: none;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+.linkki {
+    text-align: center;
+}
+
+.btn {
+    width: 350px;
+}
+
+.indexotsikko {
+    text-align: center;
+}
+
+span {
+    font-style: italic;
+}
+
+h1 {
+    font-family: PT Sans Narrow;
+}
+
+.goback {
+    font-size: 2em;
+}
+
+
