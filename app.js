@@ -12,7 +12,7 @@ mongoose.connect(url, {useMongoClient: true});
 
 app.locals.moment = require("moment");
 
-// Schema setup
+// SCHEMA SETUP
 var temperatureSchema = new mongoose.Schema({
     temperature: Number,
     createdAt: { type: Date, default: Date.now }
@@ -28,23 +28,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-
+//===================
 // GET ROUTES
+//===================
 
 // LANDING PAGE
-
 app.get("/", function(req, res){
     res.render("landing");
 });
 
 // INDEX PAGE
-
 app.get("/weatherapp", function(req, res){
     res.render("index");
 });
 
 // TOKIO
-
 app.get("/weatherapp/Tokio", function(req, res){
     TokioTemp.find({}).sort({"_id": -1}).limit(1).exec(function(err, temper){
          if(err){
@@ -68,7 +66,6 @@ app.get("/weatherapp/Tokio", function(req, res){
 });
 
 // HELSINKI
-
 app.get("/weatherapp/Helsinki", function(req, res){
     HelsinkiTemp.find({}).sort({"_id": -1}).limit(1).exec(function(err, temper){
          if(err){
@@ -92,7 +89,6 @@ app.get("/weatherapp/Helsinki", function(req, res){
 });
 
 // NEW YORK
-
 app.get("/weatherapp/NewYork", function(req, res){
     NewyorkTemp.find({}).sort({"_id": -1}).limit(1).exec(function(err, temper){
          if(err){
@@ -116,7 +112,6 @@ app.get("/weatherapp/NewYork", function(req, res){
 });
 
 // AMSTERDAM
-
 app.get("/weatherapp/Amsterdam", function(req, res, next){
     AmsterdamTemp.find({}).sort({"_id": -1}).limit(1).exec(function(err, temper){
          if(err){
@@ -140,7 +135,6 @@ app.get("/weatherapp/Amsterdam", function(req, res, next){
 });
 
 // DUBAI
-
 app.get("/weatherapp/Dubai", function(req, res){
     DubaiTemp.find({}).sort({"_id": -1}).limit(1).exec(function(err, temper){
          if(err){
@@ -164,11 +158,11 @@ app.get("/weatherapp/Dubai", function(req, res){
 });
 
 
-
+//===============
 // POST ROUTES
+//===============
 
 // AMSTERDAM
-
 app.post("/weatherapp/Amsterdam/", function(req, res){
 request("http://api.openweathermap.org/data/2.5/weather?q=Amsterdam&APPID=2eb62c648633a0363ddd4c58e7f2f737&units=metric",function(error, response, body){
         if(!error && response.statusCode == 200){
@@ -193,7 +187,6 @@ request("http://api.openweathermap.org/data/2.5/weather?q=Amsterdam&APPID=2eb62c
 });
 
 // NEW YORK
-
 app.post("/weatherapp/NewYork/", function(req, res){
 request("http://api.openweathermap.org/data/2.5/weather?q=New+York&APPID=2eb62c648633a0363ddd4c58e7f2f737&units=metric",function(error, response, body){
         if(!error && response.statusCode == 200){
@@ -218,7 +211,6 @@ request("http://api.openweathermap.org/data/2.5/weather?q=New+York&APPID=2eb62c6
 });
 
 // DUBAI
-
 app.post("/weatherapp/Dubai/", function(req, res){
 request("http://api.openweathermap.org/data/2.5/weather?q=Dubai&APPID=2eb62c648633a0363ddd4c58e7f2f737&units=metric",function(error, response, body){
         if(!error && response.statusCode == 200){
@@ -243,7 +235,6 @@ request("http://api.openweathermap.org/data/2.5/weather?q=Dubai&APPID=2eb62c6486
 });
 
 // HELSINKI
-
 app.post("/weatherapp/Helsinki/", function(req, res){
 request("http://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=2eb62c648633a0363ddd4c58e7f2f737&units=metric",function(error, response, body){
         if(!error && response.statusCode == 200){
@@ -268,7 +259,6 @@ request("http://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=2eb62c6
 });
 
 // TOKIO
-
 app.post("/weatherapp/Tokio/", function(req, res){
 request("http://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=2eb62c648633a0363ddd4c58e7f2f737&units=metric",function(error, response, body){
         if(!error && response.statusCode == 200){
@@ -294,7 +284,6 @@ request("http://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=2eb62c6486
 
 
 // SERVER CONFIG
-
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("the server has started");
 });
