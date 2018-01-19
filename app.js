@@ -6,7 +6,8 @@ var mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/temperatures", {useMongoClient: true});
+// mongoose.connect("mongodb://localhost/temperatures", {useMongoClient: true});
+mongoose.connect("mongodb://Tuomas:password@ds263137.mlab.com:63137/weatherapp", {useMongoClient: true});
 
 app.locals.moment = require("moment");
 
